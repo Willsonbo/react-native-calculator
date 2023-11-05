@@ -1,8 +1,8 @@
 import { TouchableOpacity, Text, StyleSheet } from "react-native"
 
-const PadButton = ({ label, color = 'white', onPress }) => {
+const PadButton = ({ label, backgroundColor = '#98C379', color = 'white', onPress }) => {
   return (
-    <TouchableOpacity style={styles.button}
+    <TouchableOpacity style={[styles.button, { backgroundColor: backgroundColor }]}
       onPress={() => onPress(label)} >
       <Text style={[styles.buttonText, { color: color }]}>{label}</Text>
     </TouchableOpacity >
