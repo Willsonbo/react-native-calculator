@@ -51,14 +51,23 @@ export default function App() {
 
     if (!isNaN(Number(label))) {
       // is number
-      setCurOperand(`${curOperand}${label}`)
+      if (curOperator && !lastOperand) {
+        // consecutive calculation
+        setLastOperand(curOperand);
+        setCurOperand(label);
+      } else {
+        setCurOperand(`${curOperand}${label}`)
+      }
     } else {
       if (curOperator) {
+        const result = calc(lastOperand, curOperand, curOperator);
         if (label !== '=') {
-          // TODO: get and show result, allow input
+          // get and show result, allow input
+          setLastOperand('');
+          setCurOperand(result);
+          setCurOperator(label);
           return;
         } else {
-          const result = calc(lastOperand, curOperand, curOperator);
           setLastOperand('');
           setCurOperand(result);
           setCurOperator('');
