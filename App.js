@@ -85,7 +85,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.expression} >{curOperand}</Text>
+      <View style={styles.expressionContainer}>
+        <Text style={styles.expression} adjustsFontSizeToFit={true}>{curOperand}</Text>
+      </View>
       <FlatList
         style={styles.buttonList}
         numColumns={4}
@@ -110,13 +112,19 @@ const styles = StyleSheet.create({
   buttonList: {
     flex: 1
   },
+  expressionContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    width: '100%',
+  },
   expression: {
-    textAlignVertical: 'bottom',
+    maxHeight: 50,
     alignItems: 'flex-end',
     width: '100%',
     color: 'white',
     fontSize: 40,
-    marginRight: 40,
+    marginRight: 30,
     textAlign: 'right',
     flex: 1
   }
